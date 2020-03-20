@@ -26,8 +26,13 @@ namespace ProxyClass
             
             try
             {
+                // 시작 시간 측정
                 DateTime startTime = DateTime.Now;
-                var returnVal = method.Invoke(_instance, methodCall.InArgs);
+
+                // 메서드 호출
+                var returnVal = method.Invoke(_instance, methodCall.InArgs);    
+
+                // 실행 이후에 시간 측정
                 Console.WriteLine($"ElapsedTime : {DateTime.Now.Subtract(startTime).TotalMilliseconds} (ms)");
 
                 return new ReturnMessage(returnVal, null, 0, methodCall.LogicalCallContext, methodCall);
